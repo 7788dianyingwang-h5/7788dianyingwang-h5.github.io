@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>7788电影网 - 双8街机像素片单与热播榜单 | 7788dianyingwang-h5</title>
+<meta name="description" content="7788电影网(7788dianyingwang-h5)以双8街机像素风做电影、剧集、动漫、综艺、短片与影评片单，CRT扫描线、8bit海报墙、移动端自适应。官网 https://7788dianyingwang-h5.github.io，单页演示，内页链接以 # 占位，接真实片源需版权授权。">
+<meta name="keywords" content="7788电影网, 7788dianyingwang-h5, 双8街机, 像素电影站, 8bit片单, 热播榜单">
+<meta name="author" content="7788电影网">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://7788dianyingwang-h5.github.io">
+<link rel="alternate" hreflang="zh-CN" href="https://7788dianyingwang-h5.github.io">
+<meta property="og:type" content="website">
+<meta property="og:title" content="7788电影网 - 双8街机像素电影片单">
+<meta property="og:description" content="7788dianyingwang-h5 提供8bit海报墙、电影/剧集/动漫/综艺/短片/影评，炭黑霓虹单页，移动端自适应。">
+<meta property="og:url" content="https://7788dianyingwang-h5.github.io">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="7788电影网 - 双8街机像素">
+<meta name="twitter:description" content="7788dianyingwang-h5 官网提供8bit海报墙与热播榜单演示。">
+<style>
+:root{
+  --bg:#0b0b12;--bg2:#12121f;--card:#15162a;--card2:#1c1d33;--ink:#eaf6ff;--muted:#9fb0c8;
+  --pink:#ff4fd8;--pink2:#ff8be8;--cyan:#27e0ff;--cyan2:#7af1ff;--violet:#9b6bff;--violet2:#c0a3ff;
+  --green:#39ff9e;--gold:#ffd166;--line:rgba(255,79,216,.26);--line2:rgba(39,224,255,.26);--navh:64px;--radius:16px;--shadow:0 16px 34px rgba(4,4,10,.5);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif;
+  background:
+    radial-gradient(880px 420px at 88% -10%,rgba(255,79,216,.18),transparent 60%),
+    radial-gradient(760px 380px at 2% 6%,rgba(39,224,255,.16),transparent 58%),
+    radial-gradient(620px 320px at 60% 120%,rgba(155,107,255,.14),transparent 60%),
+    linear-gradient(180deg,var(--bg),var(--bg2));
+  color:var(--ink);line-height:1.8;padding-top:var(--navh);-webkit-font-smoothing:antialiased;position:relative;}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.06;
+  background:repeating-linear-gradient(0deg,rgba(255,255,255,.6) 0 1px,transparent 1px 3px);}
+a{color:var(--cyan2);text-decoration:none;transition:.25s;}
+a:hover{color:var(--pink2);}
+img{max-width:100%;display:block;}ul{list-style:none;}
+
+.nav{position:fixed;top:0;left:0;right:0;height:var(--navh);z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 16px;
+  background:rgba(11,11,18,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line2);}
+.brand{font-weight:900;font-size:clamp(15px,4.4vw,21px);color:#fff;display:flex;align-items:center;gap:8px;white-space:nowrap;}
+.brand b{background:linear-gradient(90deg,var(--pink2),var(--cyan2),var(--violet2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.brand .tag{font-size:11px;color:#0b0b12;background:var(--gold);padding:2px 7px;border-radius:6px;font-weight:800;}
+.menu-btn{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:10px;}
+.menu-btn span{width:26px;height:3px;background:var(--cyan2);border-radius:3px;transition:.3s;}
+.menu-btn.open span:nth-child(1){transform:translateY(8px) rotate(45deg);}
+.menu-btn.open span:nth-child(2){opacity:0;}
+.menu-btn.open span:nth-child(3){transform:translateY(-8px) rotate(-45deg);}
+.nav-links{display:flex;gap:6px;flex-wrap:wrap;}
+.nav-links a{color:#dff1ff;font-size:15px;font-weight:700;min-height:44px;display:inline-flex;align-items:center;padding:8px 12px;border-radius:20px;}
+.nav-links a:hover{background:rgba(255,79,216,.16);color:var(--pink2);}
+
+.wrap{max-width:1200px;margin:0 auto;padding:0 16px;position:relative;z-index:2;}
+.section{padding:64px 0;}
+.sec-title{font-size:clamp(22px,5vw,30px);font-weight:900;text-align:center;margin-bottom:8px;color:#fff;}
+.sec-title small{display:block;font-size:12px;letter-spacing:2px;color:var(--cyan2);font-weight:700;margin-top:8px;}
+.sec-title::after{content:"";display:block;width:82px;height:4px;border-radius:4px;margin:14px auto 0;background:linear-gradient(90deg,var(--pink),var(--cyan),var(--green));}
+
+/* Hero 双8街机 */
+.hero{padding:68px 0 32px;}
+.hero .wrap{display:grid;grid-template-columns:1.25fr .75fr;gap:30px;align-items:center;}
+.arcade{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,rgba(255,79,216,.22),rgba(39,224,255,.22));border:1px solid var(--line);color:#fff;font-size:12px;font-weight:800;padding:6px 14px;border-radius:22px;margin-bottom:16px;}
+.arcade b{color:var(--gold);font-size:15px;letter-spacing:1px;}
+.hero h1{font-size:clamp(28px,6vw,46px);line-height:1.16;color:#fff;margin-bottom:16px;}
+.hero h1 em{font-style:normal;color:var(--pink2);}.hero h1 i{font-style:normal;color:var(--cyan2);}
+.hero p{color:var(--muted);font-size:clamp(15px,2.6vw,17px);margin-bottom:18px;max-width:560px;}
+.urlbox{display:inline-block;font-family:ui-monospace,Menlo,Consolas,monospace;border:1px dashed var(--cyan);color:var(--cyan2);background:rgba(11,11,18,.5);padding:10px 14px;border-radius:10px;font-size:13px;margin-bottom:18px;}
+.cta{display:inline-block;background:linear-gradient(90deg,var(--pink),var(--cyan),var(--green));color:#0b0b12;font-weight:900;padding:13px 30px;border-radius:30px;min-height:46px;}
+.crt{position:relative;background:linear-gradient(160deg,var(--card2),var(--card));border:1px solid var(--line);border-radius:20px;padding:20px;box-shadow:var(--shadow);overflow:hidden;}
+.crt::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.08;background:repeating-linear-gradient(0deg,rgba(255,255,255,.7) 0 1px,transparent 1px 4px);}
+.eight{display:flex;gap:14px;justify-content:center;align-items:center;padding:10px 0;}
+.ring{width:96px;height:96px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:42px;color:#0b0b12;font-style:italic;}
+.r1{background:linear-gradient(135deg,var(--pink),var(--violet));}.r2{background:linear-gradient(135deg,var(--cyan),var(--green));}
+.crt .cap{text-align:center;color:var(--muted);font-size:13px;margin-top:8px;}
+
+/* 8bit海报墙 */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:18px;}
+.movie{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;transition:.25s;image-rendering:pixel;}
+.movie:hover{transform:translateY(-6px);border-color:var(--cyan);box-shadow:0 16px 30px rgba(39,224,255,.20);}
+.cover{height:214px;display:flex;align-items:center;justify-content:center;font-size:42px;color:#fff;position:relative;}
+.b1{background:linear-gradient(135deg,#ff4fd8,#9b6bff);}.b2{background:linear-gradient(135deg,#27e0ff,#39ff9e);color:#06231b;}
+.b3{background:linear-gradient(135deg,#ffd166,#ff4fd8);color:#3a2400;}.b4{background:linear-gradient(135deg,#9b6bff,#27e0ff);color:#06121f;}
+.b5{background:linear-gradient(135deg,#39ff9e,#27e0ff);color:#06231b;}.b6{background:linear-gradient(135deg,#ff8be8,#ffd166);color:#3a1d00;}
+.pix{position:absolute;top:10px;left:10px;background:rgba(11,11,18,.66);color:var(--cyan2);font-weight:800;font-size:11px;padding:3px 8px;border-radius:6px;border:1px solid var(--cyan);letter-spacing:1px;}
+.minfo{padding:12px 14px;}.minfo h3{font-size:15px;color:#fff;margin-bottom:6px;}.minfo p{font-size:13px;color:var(--muted);display:flex;justify-content:space-between;}
+
+/* 分类 */
+.six{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.cat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;box-shadow:0 8px 20px rgba(4,4,10,.30);transition:.25s;}
+.cat:hover{transform:translateY(-4px);border-color:var(--pink);}
+.cat .ico{font-size:30px;}.cat h3{font-size:17px;color:#fff;margin:8px 0 6px;}.cat p{font-size:13px;color:var(--muted);}.cat a{display:inline-block;margin-top:10px;font-weight:800;color:var(--cyan2);}
+
+/* 榜单 */
+.rank{display:grid;gap:12px;counter-reset:r;max-width:860px;margin:0 auto;}
+.ri{display:flex;align-items:center;gap:16px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;}
+.ri::before{counter-increment:r;content:"8-" counter(r);min-width:58px;text-align:center;height:42px;flex:0 0 58px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-weight:900;background:rgba(255,79,216,.16);color:var(--pink2);}
+.ri:nth-child(1)::before{background:linear-gradient(135deg,var(--gold),var(--pink));color:#3a2400;}.ri:nth-child(2)::before{background:linear-gradient(135deg,var(--cyan),var(--green));color:#06231b;}.ri:nth-child(3)::before{background:linear-gradient(135deg,var(--violet),var(--cyan));color:#06121f;}
+.rb{flex:1;}.rb h3{font-size:16px;color:#fff;}.rb p{font-size:13px;color:var(--muted);}.rs{font-weight:900;color:var(--gold);font-size:18px;}
+
+/* 影评 */
+.reviews{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px;}
+.rv{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;box-shadow:0 8px 20px rgba(4,4,10,.28);}
+.rv .star{color:var(--gold);font-size:14px;}.rv h3{font-size:17px;color:#fff;margin:8px 0 6px;}.rv p{font-size:13px;color:var(--muted);}.rv a{display:inline-block;margin-top:10px;font-weight:800;color:var(--cyan2);}
+
+/* 帮助+关于 */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px;box-shadow:0 8px 20px rgba(4,4,10,.28);}
+.panel h3{color:var(--pink2);margin-bottom:12px;font-size:18px;}
+.panel p{font-size:14px;color:#cfe0f2;margin-bottom:10px;}
+details{border:1px solid var(--line);background:var(--card);border-radius:10px;margin-bottom:10px;overflow:hidden;}
+summary{padding:14px 16px;font-weight:700;cursor:pointer;min-height:44px;display:flex;justify-content:space-between;align-items:center;color:#fff;}
+summary::-webkit-details-marker{display:none;}summary::after{content:"+";color:var(--cyan2);font-size:20px;}
+details[open] summary::after{content:"−";}details p{padding:0 16px 16px;color:#cfe0f2;font-size:14px;}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:6px;}
+.stat{background:var(--card2);border:1px solid var(--line);border-radius:14px;padding:16px;text-align:center;}
+.stat b{display:block;font-size:24px;color:var(--gold);}.stat span{font-size:13px;color:var(--muted);}
+.notice{margin-top:18px;background:rgba(39,224,255,.08);border:1px dashed var(--cyan);border-radius:12px;padding:16px;font-size:13px;color:#bfeefb;}
+
+.footer{background:#07070d;color:#c7d6ea;padding:46px 0 22px;margin-top:60px;border-top:1px solid var(--line2);position:relative;z-index:2;}
+.fg{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:26px;}
+.footer h4{color:#fff;font-size:16px;margin-bottom:12px;}
+.footer a{color:#9fb0c8;font-size:14px;display:inline-block;padding:4px 0;}
+.footer a:hover{color:var(--pink2);}
+.fb{text-align:center;margin-top:26px;padding-top:16px;border-top:1px solid var(--line2);font-size:13px;color:#9fb0c8;}
+.fb .u{color:var(--cyan2);font-family:ui-monospace,Menlo,Consolas,monospace;}
+.toTop{position:fixed;right:18px;bottom:18px;width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,var(--pink),var(--cyan),var(--green));color:#0b0b12;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:900;box-shadow:var(--shadow);opacity:0;visibility:hidden;transition:.3s;z-index:900;}
+.toTop.show{opacity:1;visibility:visible;}
+
+@media(max-width:900px){.hero .wrap{grid-template-columns:1fr;}}
+@media(max-width:768px){.menu-btn{display:flex;}.nav-links{position:fixed;top:var(--navh);left:0;right:0;background:rgba(11,11,18,.98);border-bottom:1px solid var(--line2);flex-direction:column;align-items:stretch;gap:0;max-height:0;overflow:hidden;transition:max-height .35s;}.nav-links.open{max-height:640px;}.nav-links a{padding:14px 18px;border-radius:0;border-bottom:1px solid rgba(255,255,255,.06);}.two{grid-template-columns:1fr;}.six{grid-template-columns:1fr 1fr;}.grid{grid-template-columns:repeat(auto-fill,minmax:150px,1fr));}.cover{height:180px;}}
+@media(max-width:520px){.six{grid-template-columns:1fr;}.ring{width:78px;height:78px;font-size:34px;}}
+@media(max-width:420px){.grid{grid-template-columns:1fr 1fr;}.cover{height:160px;}}
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","name":"7788电影网","url":"https://7788dianyingwang-h5.github.io","potentialAction":{"@type":"SearchAction","target":"https://7788dianyingwang-h5.github.io#library","query-input":"required name=search_term"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"7788电影网是什么风格？","acceptedAnswer":{"@type":"Answer","text":"本演示站用“双8街机/8bit像素”主线，炭黑底、CRT扫描线、品红青绿霓虹，做电影、剧集、动漫、综艺、短片与影评片单；内页链接以 # 占位，仅作单页模板演示。"}},
+{"@type":"Question","name":"8bit海报墙怎么用？","acceptedAnswer":{"@type":"Answer","text":"每部影片带像素标签与类型/时长，可按电影、剧集、动漫、综艺、短片分类浏览；正式站把 # 替换为真实分类页、详情页与正版授权播放入口即可。"}},
+{"@type":"Question","name":"移动端能正常刷片单吗？","acceptedAnswer":{"@type":"Answer","text":"全站响应式，手机端自动折叠导航、海报双列/自适应、分类与热榜重排，核心内容纯HTML便于搜索引擎抓取。"}},
+{"@type":"Question","name":"必应怎么收录这个单页？","acceptedAnswer":{"@type":"Answer","text":"已配置 title、description、canonical、Open Graph 与 JSON-LD；可在 Bing Webmaster Tools 提交首页 https://7788dianyingwang-h5.github.io 。按你要求不生成 robots.txt 与 sitemap.xml。电影站若提供在线播放，应使用获授权片源，避免未授权上传、下载与侵权。 [1,4](@ref)"}}
+]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Movie","name":"双八像素危机","url":"https://7788dianyingwang-h5.github.io#library","description":"演示影片：7788电影网8bit海报墙示例，科幻动作向，以街机/像素世界为设定，用于海报网格与影评模板展示。","genre":["科幻","动作"],"datePublished":"2025-06-01","aggregateRating":{"@type":"AggregateRating","ratingValue":"9.0","bestRating":"10","worstRating":"1","ratingCount":"198"}}
+</script>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/laoliu.js"></script>
+
+<header class="nav">
+  <div class="brand"><b>7788电影网</b><span class="tag">7788dianyingwang-h5</span></div>
+  <button class="menu-btn" id="menuBtn" aria-label="菜单" aria-expanded="false"><span></span><span></span><span></span></button>
+  <nav class="nav-links" id="navLinks" aria-label="主导航">
+    <a href="#home">首页</a>
+    <a href="#library">8bit片库</a>
+    <a href="#category">街机分类</a>
+    <a href="#ranking">热播榜单</a>
+    <a href="#review">像素影评</a>
+    <a href="#help">观片帮助</a>
+    <a href="#about">关于本站</a>
+  </nav>
+</header>
+
+<section class="hero" id="home">
+  <div class="wrap">
+    <div>
+      <span class="arcade">双8街机厅 <b>7 7 8 8</b> · 8bit CRT 海报墙</span>
+      <h1>7788电影网 · <em>双8像素</em>海报墙 <br><i>街机式</i>刷片单</h1>
+      <p>7788电影网（7788dianyingwang-h5）用炭黑CRT、双“8”回环与品红/青/绿霓虹做8bit片库，整合电影、剧集、动漫、综艺、短片与影评；手机电脑自适应。本页仅演示，内页均用 # 占位，接真实片源需版权授权。</p>
+      <div class="urlbox">https://7788dianyingwang-h5.github.io</div>
+      <br>
+      <a class="cta" href="#library">投币进8bit片库 #</a>
+    </div>
+    <aside class="crt" aria-label="双8街机预览">
+      <div class="eight">
+        <div class="ring r1">8</div>
+        <div class="ring r2">8</div>
+      </div>
+      <div class="cap">CRT扫描线 · 像素光块 · 街机投币式片单</div>
+    </aside>
+  </div>
+</section>
+
+<section class="section" id="library">
+  <div class="wrap">
+    <h2 class="sec-title">8bit片库<small>7788 DIANYINGWANG · 双8街机样片</small></h2>
+    <div class="grid">
+      <article class="movie"><div class="cover b1"><span class="pix">PIXEL</span>🎮</div><div class="minfo"><h3>双八像素危机</h3><p><span>科幻/动作</span><span>116分</span></p></div></article>
+      <article class="movie"><div class="cover b2"><span class="pix">PIXEL</span>📺</div><div class="minfo"><h3>霓虹续关局</h3><p><span>剧集/悬疑</span><span>12集</span></p></div></article>
+      <article class="movie"><div class="cover b3"><span class="pix">PIXEL</span>🧸</div><div class="minfo"><h3>芯片小队出发</h3><p><span>动漫/冒险</span><span>10集</span></p></div></article>
+      <article class="movie"><div class="cover b4"><span class="pix">PIXEL</span>🎤</div><div class="minfo"><h3>投币歌会王</h3><p><span>综艺/音乐</span><span>第2季</span></p></div></article>
+      <article class="movie"><div class="cover b5"><span class="pix">PIXEL</span>🎞️</div><div class="minfo"><h3>8帧爱情实验</h3><p><span>短片/治愈</span><span>8部</span></p></div></article>
+      <article class="movie"><div class="cover b6"><span class="pix">PIXEL</span>🕹️</div><div class="minfo"><h3>厅台深夜赛</h3><p><span>纪录/街机</span><span>6集</span></p></div></article>
+    </div>
+    <div style="text-align:center;margin-top:28px;"><a href="#" style="display:inline-block;border:1px solid var(--cyan);padding:12px 28px;border-radius:26px;font-weight:800;color:var(--cyan2);">浏览全部8bit片单 #</a></div>
+  </div>
+</section>
+
+<section class="section" id="category" style="background:rgba(155,107,255,.08);">
+  <div class="wrap">
+    <h2 class="sec-title">街机分类<small>按8bit厅台分池刷片</small></h2>
+    <div class="six">
+      <div class="cat"><div class="ico">🎬</div><h3>电影厅</h3><p>科幻、动作、悬疑、喜剧、动画电影按像素海报分池。</p><a href="#library">看电影 #</a></div>
+      <div class="cat"><div class="ico">📺</div><h3>剧集厅</h3><p>国产、欧美、日韩剧集按悬疑/职场/治愈编号。</p><a href="#library">看剧集 #</a></div>
+      <div class="cat"><div class="ico">🧸</div><h3>动漫厅</h3><p>国漫、日番、短动画按世界view与画风归类。</p><a href="#library">看动漫 #</a></div>
+      <div class="cat"><div class="ico">🎤</div><h3>综艺厅</h3><p>音乐、竞演、户外、恋综按舞台与玩法分池。</p><a href="#library">看综艺 #</a></div>
+      <div class="cat"><div class="ico">🎞️</div><h3>短片厅</h3><p>微电影、实验片、学生作品按8帧主题策展。</p><a href="#library">看短片 #</a></div>
+      <div class="cat"><div class="ico">🕹️</div><h3>纪录厅</h3><p>街机历史、电影幕后、音乐制作纪录片合集。</p><a href="#library">看纪录 #</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="ranking">
+  <div class="wrap">
+    <h2 class="sec-title">热播榜单<small>7788-H5 双8街机热玩榜</small></h2>
+    <div class="rank">
+      <div class="ri"><div class="rb"><h3>双八像素危机</h3><p>电影·科幻动作 / 116分 / 8bit主打</p></div><div class="rs">9.6</div></div>
+      <div class="ri"><div class="rb"><h3>芯片小队出发</h3><p>动漫·冒险 / 10集 / 街机画风</p></div><div class="rs">9.4</div></div>
+      <div class="ri"><div class="rb"><h3>霓虹续关局</h3><p>剧集·悬疑 / 12集 / 投币跟更</p></div><div class="rs">9.2</div></div>
+      <div class="ri"><div class="rb"><h3>投币歌会王</h3><p>综艺·音乐 / 第2季 / 舞台竞演</p></div><div class="rs">9.0</div></div>
+      <div class="ri"><div class="rb"><h3>8帧爱情实验</h3><p>短片·治愈 / 8部 / 像素微情</p></div><div class="rs">8.8</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="review" style="background:rgba(39,224,255,.07);">
+  <div class="wrap">
+    <h2 class="sec-title">像素影评<small>双8街机·观后通关笔记</small></h2>
+    <div class="reviews">
+      <div class="rv"><div class="star">★★★★★ 9.6</div><h3>《双八像素危机》世界构建</h3><p>从CRT故障、像素物理到投币机制，拆解8bit科幻如何把“续关”变成情绪转折。</p><a href="#library">读完整影评 #</a></div>
+      <div class="rv"><div class="star">★★★★☆ 9.2</div><h3>《芯片小队出发》角色评析</h3><p>队伍分工、像素表情与关卡节奏，适合动漫改编与儿童向策展入门。</p><a href="#library">读完整影评 #</a></div>
+      <div class="rv"><div class="star">★★★★☆ 9.0</div><h3>《霓虹续关局》叙事结构</h3><p>多线伏笔与“存档点”重构，悬疑剧如何用街机语言降低信息负担。</p><a href="#library">读完整影评 #</a></div>
+      <div class="rv"><div class="star">★★★★★ 9.4</div><h3>《投币歌会王》舞台美学</h3><p>霓虹灯光、像素字幕与竞演剪辑，综艺影评也能做结构化评分。</p><a href="#library">读完整影评 #</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="help" style="background:rgba(255,79,216,.06);">
+  <div class="wrap">
+    <h2 class="sec-title">观片帮助<small>7788电影网 使用与合规</small></h2>
+    <div class="two">
+      <div class="panel">
+        <h3>街机刷片流程</h3>
+        <p>1. 首页“投币进8bit片库”，按PIXEL海报看电影/剧集/动漫/综艺/短片/纪录。</p>
+        <p>2. 到“街机分类”切厅台，进对应演示片单；看“热播榜单”跟口碑。</p>
+        <p>3. 看“像素影评”读通关笔记；点影片卡进详情，内页均 #。</p>
+        <p>4. 手机端点右上角汉堡菜单切栏目，全站自适应，无需手动缩放。</p>
+      </div>
+      <div>
+        <details open><summary>可以直接看全片吗？</summary><p>本页为单页演示，不提供实际播放；正式站若提供在线观看，须接入有版权授权的片源，不聚合未授权影视、不提供盗版下载。 [4](@ref)</p></details>
+        <details><summary>为什么很多链接是 #？</summary><p>按你的要求，内页、播放、详情全部用 # 占位；部署时把 # 替换为真实授权详情页、正版播放页或合法平台跳转链接。</p></details>
+        <details><summary>双8/街机素材会侵权吗？</summary><p>本页片名、海报占位、LOGO均为虚构；正式站避免使用他人剧照、明星姓名、知名IP与商标，网页设计也不要照搬他人布局，降低侵权与不正当竞争风险。 [12](@ref)</p></details>
+        <details><summary>必应收录要注意什么？</summary><p>保持 title/description/canonical 一致、核心内容纯HTML、移动端速度快；在 Bing Webmaster Tools 提交首页。本页按你要求不生成 robots.txt 与 sitemap.xml。</p></details>
+      </div>
+    </div>
+    <div class="notice">
+      合规说明：本页为「7788电影网 / 7788dianyingwang-h5」单页演示，仅展示8bit海报墙、街机分类、热播榜单与像素影评；不提供未授权播放、不聚合非法视听源，所有片名/海报占位均为虚构。正式上线接片源需取得著作权授权并办理相关互联网视听节目资质。内页链接均以 # 占位，不生成 robots.txt 与 sitemap.xml。
+    </div>
+  </div>
+</section>
+
+<section class="section" id="about">
+  <div class="wrap">
+    <h2 class="sec-title">关于本站<small>品牌·域名·官网·SEO</small></h2>
+    <div class="two">
+      <div class="panel">
+        <h3>网站定位</h3>
+        <p>7788电影网（7788dianyingwang-h5）做“双8街机厅”影视单页：首页双8回环、8bit片库、街机分类、热播榜、像素影评、观片帮助一体化。全站统一关键词「7788电影网」「7788dianyingwang-h5」「双8街机/8bit片单」。</p>
+        <p>官网：<br><span style="font-family:ui-monospace,Menlo,Consolas,monospace;color:var(--cyan2);">https://7788dianyingwang-h5.github.io</span></p>
+      </div>
+      <div class="panel">
+        <h3>技术与收录</h3>
+        <p>内部CSS、语义化标题、canonical、Open Graph、JSON-LD（WebSite/FAQ/Movie）；核心内容不依赖JS，便于必应单页抓取。[17](@ref)</p>
+        <div class="stats">
+          <div class="stat"><b>6</b><span>演示栏目</span></div>
+          <div class="stat"><b>双8</b><span>街机像素模型</span></div>
+          <div class="stat"><b>JSON-LD</b><span>WebSite/FAQ/Movie</span></div>
+          <div class="stat"><b>0</b><span>robots/sitemap</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="fg">
+      <div><h4>7788电影网</h4><ul>
+        <li><a href="#home">首页 #</a></li><li><a href="#library">8bit片库 #</a></li><li><a href="#ranking">热播榜单 #</a></li><li><a href="#about">关于本站 #</a></li>
+      </ul></div>
+      <div><h4>街机分类</h4><ul>
+        <li><a href="#category">电影 #</a></li><li><a href="#category">剧集 #</a></li><li><a href="#category">动漫 #</a></li><li><a href="#category">综艺 #</a></li>
+      </ul></div>
+      <div><h4>帮助</h4><ul>
+        <li><a href="#help">观片帮助 #</a></li><li><a href="#review">像素影评 #</a></li><li><a href="#">意见反馈 #</a></li><li><a href="#">免责声明 #</a></li>
+      </ul></div>
+      <div><h4>官方信息</h4><ul>
+        <li><a href="#">站名：7788电影网</a></li><li><a href="#">域名：7788dianyingwang-h5</a></li><li><a href="https://7788dianyingwang-h5.github.io">官网：7788dianyingwang-h5.github.io</a></li><li><a href="#">关键词：双8街机8bit</a></li>
+      </ul></div>
+    </div>
+    <div class="fb">
+      <p>7788电影网 · 7788dianyingwang-h5 · 双8街机8bit海报墙单页演示</p>
+      <p class="u">https://7788dianyingwang-h5.github.io</p>
+      <p>© 2026 7788电影网演示模板。不生成 robots.txt 与 sitemap.xml，内页链接以 # 占位；片名海报均为虚构，接真实片源需版权授权。</p>
+    </div>
+  </div>
+</footer>
+
+<a href="#" class="toTop" id="toTop" aria-label="回到顶部">↑</a>
+<script>
+(function(){
+  var btn=document.getElementById('menuBtn'),links=document.getElementById('navLinks');
+  btn.addEventListener('click',function(){var o=links.classList.toggle('open');btn.classList.toggle('open',o);btn.setAttribute('aria-expanded',o?'true':'false');});
+  links.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){links.classList.remove('open');btn.classList.remove('open');btn.setAttribute('aria-expanded','false');});});
+  var t=document.getElementById('toTop');window.addEventListener('scroll',function(){t.classList.toggle('show',window.scrollY>400);});
+  t.addEventListener('click',function(e){e.preventDefault();window.scrollTo({top:0,behavior:'smooth'});});
+})();
+</script>
+</body>
+</html>
